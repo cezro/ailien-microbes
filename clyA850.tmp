@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://bymjphbb46n7s"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_10s3w"]
+[ext_resource type="Texture2D" uid="uid://choug2jybf36" path="res://icon.svg" id="2_fwky0"]
+[ext_resource type="Script" path="res://line_2d.gd" id="3_h2pxn"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nirvg"]
+radius = 19.0
+height = 38.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3wkp5"]
+radius = 21.2132
+
+[node name="ClydeTestEnv" type="Node2D"]
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(593, 505)
+up_direction = Vector2(-1, 0)
+script = ExtResource("1_10s3w")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+position = Vector2(0.200012, 0.200001)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_fwky0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("CapsuleShape2D_nirvg")
+
+[node name="EnemyStatic" type="CharacterBody2D" parent="." groups=["enemies"]]
+position = Vector2(895, 257)
+
+[node name="Sprite2D" type="Sprite2D" parent="EnemyStatic"]
+position = Vector2(7.86781e-06, 7.51019e-06)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("2_fwky0")
+flip_v = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyStatic"]
+shape = SubResource("CircleShape2D_3wkp5")
+
+[node name="Line2D" type="Line2D" parent="."]
+width = 3.0
+script = ExtResource("3_h2pxn")
